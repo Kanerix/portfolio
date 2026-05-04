@@ -2,7 +2,6 @@
     import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
     import {
         faAddressBook,
-        faArrowUpRightFromSquare,
         faEnvelope,
         faPaperPlane,
     } from "@fortawesome/free-solid-svg-icons";

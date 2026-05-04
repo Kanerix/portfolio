@@ -1,57 +1,68 @@
 <script lang="ts">
-import type { IconDefinition } from "@fortawesome/free-solid-svg-icons";
-import {
-  faAward,
-  faFileLines,
-  faGraduationCap,
-  faRobot,
-} from "@fortawesome/free-solid-svg-icons";
-import Fa from "svelte-fa";
+    import type { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+    import {
+        faAward,
+        faFileLines,
+        faGraduationCap,
+        faRobot,
+    } from "@fortawesome/free-solid-svg-icons";
+    import Fa from "svelte-fa";
 
-interface TimelineEntry {
-  icon: IconDefinition;
-  title: string;
-  subtitle: string;
-  date: string;
-  description: string;
-  tags?: string[];
-  iconColor?: string;
-}
+    interface TimelineEntry {
+        icon: IconDefinition;
+        title: string;
+        subtitle: string;
+        date: string;
+        description: string;
+        tags?: string[];
+        iconColor?: string;
+    }
 
-const experience: TimelineEntry[] = [
-  {
-    icon: faRobot,
-    iconColor: "#7c8ff7",
-    title: "Student Worker — AI & Data Platform Engineer",
-    subtitle: "Egmont, Copenhagen",
-    date: "Nov 2023 — Present",
-    description:
-      "Working on the AI & Data platform across three focus areas: designing and developing internal automation workflows that reduce manual workload; playing a key role in building a company-wide AI image and video generation platform; and contributing to the development and maintenance of the AI & Data platform infrastructure.",
-    tags: ["Python", "TypeScript", "Docker", "Rust", "AI/ML"],
-  },
-];
+    const experience: TimelineEntry[] = [
+        {
+            icon: faRobot,
+            iconColor: "#7c8ff7",
+            title: "Student Worker — AI & Data Platform Engineer",
+            subtitle: "Egmont, Copenhagen",
+            date: "Nov 2023 — Present",
+            description:
+                "Working on the AI & Data platform across three focus areas: \
+                designing and developing internal automation workflows that \
+                reduce manual workload; playing a key role in building a \
+                company-wide AI image and video generation platform; and \
+                contributing to the development and maintenance of the AI & Data \
+                platform infrastructure.",
+            tags: ["Python", "TypeScript", "Docker", "Rust", "AI/ML"],
+        },
+    ];
 
-const education: TimelineEntry[] = [
-  {
-    icon: faGraduationCap,
-    iconColor: "#a78bfa",
-    title: "B.Sc. Software Development",
-    subtitle: "IT University of Copenhagen",
-    date: "Aug 2023 — Jun 2027",
-    description:
-      "Pursuing a Bachelor of Science in Software Development at one of Denmark's leading universities specialising in IT and technology. The programme provides a strong foundation in both theoretical and practical aspects of software development.",
-  },
-  {
-    icon: faAward,
-    iconColor: "#f472b6",
-    title: "Higher Technical Examination (HTX)",
-    subtitle: "Københavns Mediegymnasium",
-    date: "Aug 2020 — Jun 2023",
-    description:
-      "Completed the HTX at Next Københavns Mediegymnasium with a strong emphasis on technology, science and computer science. The programme provided a solid technical foundation and prepared for further studies within IT and engineering.",
-    tags: ["Computer Science", "Technology", "Mathematics"],
-  },
-];
+    const education: TimelineEntry[] = [
+        {
+            icon: faGraduationCap,
+            iconColor: "#a78bfa",
+            title: "B.Sc. Software Development",
+            subtitle: "IT University of Copenhagen",
+            date: "Aug 2023 — Jun 2027",
+            description:
+                "Pursuing a Bachelor of Science in Software Development at one \
+                of Denmark's leading universities specialising in IT and \
+                technology. The programme provides a strong foundation in both \
+                theoretical and practical aspects of software development.",
+        },
+        {
+            icon: faAward,
+            iconColor: "#f472b6",
+            title: "Higher Technical Examination (HTX)",
+            subtitle: "Københavns Mediegymnasium",
+            date: "Aug 2020 — Jun 2023",
+            description:
+                "Completed the HTX at Next Københavns Mediegymnasium with a \
+                strong emphasis on technology, science and computer science. The \
+                programme provided a solid technical foundation and prepared for \
+                further studies within IT and engineering.",
+            tags: ["Computer Science", "Technology", "Mathematics"],
+        },
+    ];
 </script>
 
 <svelte:head>
@@ -81,7 +92,9 @@ const education: TimelineEntry[] = [
 
     <!-- Experience Section -->
     <div class="flex flex-col gap-4">
-        <h2 class="text-[0.65rem] font-bold uppercase tracking-widest text-accent/50">
+        <h2
+            class="text-[0.65rem] font-bold uppercase tracking-widest text-accent/50"
+        >
             Experience
         </h2>
 
@@ -94,30 +107,50 @@ const education: TimelineEntry[] = [
 
             {#each experience as entry, i}
                 <div
-                    class="relative flex gap-4 sm:gap-5 {i !== experience.length - 1 ? 'pb-8' : ''}"
+                    class="relative flex gap-4 sm:gap-5 {i !==
+                    experience.length - 1
+                        ? 'pb-8'
+                        : ''}"
                 >
                     <!-- Icon node -->
                     <div
                         class="relative z-10 flex items-center justify-center w-8 h-8 shrink-0 rounded-lg"
                         style="
-                            background: color-mix(in srgb, {entry.iconColor ?? '#7c8ff7'} 18%, oklch(0.12 0.035 275));
-                            box-shadow: 0 0 0 4px oklch(0.12 0.035 275), 0 0 10px color-mix(in srgb, {entry.iconColor ?? '#7c8ff7'} 40%, transparent);
+                            background: color-mix(in srgb, {entry.iconColor ??
+                            '#7c8ff7'} 18%, oklch(0.12 0.035 275));
+                            box-shadow: 0 0 0 4px oklch(0.12 0.035 275), 0 0 10px color-mix(in srgb, {entry.iconColor ??
+                            '#7c8ff7'} 40%, transparent);
                         "
                     >
-                        <Fa icon={entry.icon} color={entry.iconColor ?? '#7c8ff7'} class="text-xs" />
+                        <Fa
+                            icon={entry.icon}
+                            color={entry.iconColor ?? "#7c8ff7"}
+                            class="text-xs"
+                        />
                     </div>
 
                     <!-- Content -->
                     <div class="flex flex-col gap-1.5 pt-0.5 min-w-0">
-                        <div class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-2">
-                            <h3 class="text-sm font-semibold leading-tight">{entry.title}</h3>
-                            <span class="text-xs text-accent/50">{entry.subtitle}</span>
+                        <div
+                            class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-2"
+                        >
+                            <h3 class="text-sm font-semibold leading-tight">
+                                {entry.title}
+                            </h3>
+                            <span class="text-xs text-accent/50"
+                                >{entry.subtitle}</span
+                            >
                         </div>
                         <span
                             class="text-xs font-semibold"
-                            style="color: {entry.iconColor ?? 'oklch(0.62 0.22 258)'};"
-                                                    >{entry.date}</span>
-                        <p class="text-xs sm:text-sm leading-relaxed text-accent/75">{entry.description}</p>
+                            style="color: {entry.iconColor ??
+                                'oklch(0.62 0.22 258)'};">{entry.date}</span
+                        >
+                        <p
+                            class="text-xs sm:text-sm leading-relaxed text-accent/75"
+                        >
+                            {entry.description}
+                        </p>
                         {#if entry.tags}
                             <div class="flex flex-wrap gap-1.5 pt-1">
                                 {#each entry.tags as tag}
@@ -140,7 +173,9 @@ const education: TimelineEntry[] = [
 
     <!-- Education Section -->
     <div class="flex flex-col gap-4">
-        <h2 class="text-[0.65rem] font-bold uppercase tracking-widest text-accent/50">
+        <h2
+            class="text-[0.65rem] font-bold uppercase tracking-widest text-accent/50"
+        >
             Education
         </h2>
 
@@ -153,30 +188,53 @@ const education: TimelineEntry[] = [
 
             {#each education as entry, i}
                 <div
-                    class="relative flex gap-4 sm:gap-5 {i !== education.length - 1 ? 'pb-8' : ''}"
+                    class="relative flex gap-4 sm:gap-5 {i !==
+                    education.length - 1
+                        ? 'pb-8'
+                        : ''}"
                 >
                     <!-- Icon node -->
                     <div
                         class="relative z-10 flex items-center justify-center w-8 h-8 shrink-0 rounded-lg"
                         style="
-                            background: color-mix(in srgb, {entry.iconColor ?? '#a78bfa'} 18%, oklch(0.12 0.035 275));
-                            box-shadow: 0 0 0 4px oklch(0.12 0.035 275), 0 0 10px color-mix(in srgb, {entry.iconColor ?? '#a78bfa'} 40%, transparent);
+                            background: color-mix(in srgb,
+                            {entry.iconColor ?? '#a78bfa'}
+                            18%, oklch(0.12 0.035 275)); box-shadow: 0 0 0 4px
+                            oklch(0.12 0.035 275), 0 0 10px
+                            color-mix(in srgb,
+                            {entry.iconColor ?? '#a78bfa'}
+                            40%, transparent);
                         "
                     >
-                        <Fa icon={entry.icon} color={entry.iconColor ?? '#a78bfa'} class="text-xs" />
+                        <Fa
+                            icon={entry.icon}
+                            color={entry.iconColor ?? "#a78bfa"}
+                            class="text-xs"
+                        />
                     </div>
 
                     <!-- Content -->
                     <div class="flex flex-col gap-1.5 pt-0.5 min-w-0">
-                        <div class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-2">
-                            <h3 class="text-sm font-semibold leading-tight">{entry.title}</h3>
-                            <span class="text-xs text-accent/50">{entry.subtitle}</span>
+                        <div
+                            class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-2"
+                        >
+                            <h3 class="text-sm font-semibold leading-tight">
+                                {entry.title}
+                            </h3>
+                            <span class="text-xs text-accent/50"
+                                >{entry.subtitle}</span
+                            >
                         </div>
                         <span
                             class="text-xs font-semibold"
                             style="color: {entry.iconColor ?? '#a78bfa'};"
-                        >{entry.date}</span>
-                        <p class="text-xs sm:text-sm leading-relaxed text-accent/75">{entry.description}</p>
+                            >{entry.date}</span
+                        >
+                        <p
+                            class="text-xs sm:text-sm leading-relaxed text-accent/75"
+                        >
+                            {entry.description}
+                        </p>
                         {#if entry.tags}
                             <div class="flex flex-wrap gap-1.5 pt-1">
                                 {#each entry.tags as tag}

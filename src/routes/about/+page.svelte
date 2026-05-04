@@ -1,11 +1,11 @@
 <script lang="ts">
-import {
-  faCode,
-  faGraduationCap,
-  faLightbulb,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
-import Fa from "svelte-fa";
+    import {
+        faCode,
+        faGraduationCap,
+        faLightbulb,
+        faUser,
+    } from "@fortawesome/free-solid-svg-icons";
+    import Fa from "svelte-fa";
 </script>
 
 <svelte:head>
@@ -36,17 +36,18 @@ import Fa from "svelte-fa";
     <!-- Introduction -->
     <div class="flex flex-col gap-3">
         <p class="text-sm leading-relaxed text-accent/80">
-            I am a passionate and driven Software Development student with a strong
-            interest in AI, data and technology. Currently working as an AI &amp; Data
-            Platform Engineer at Egmont, I thrive in environments where I can solve
-            complex problems and build innovative solutions that make a real impact.
+            I am a passionate and driven Software Development student with a
+            strong interest in AI, data and technology. Currently working as an
+            AI &amp; Data Platform Engineer at Egmont, I thrive in environments
+            where I can solve complex problems and build innovative solutions
+            that make a real impact.
         </p>
         <p class="text-sm leading-relaxed text-accent/80">
             Outside of tech, I am an active and social person who values both
             teamwork and community. I am a dedicated Brøndby IF supporter and
             spend a lot of my free time climbing and bouldering — a sport that
-            challenges both my physical and mental strength and mirrors my approach
-            to problem-solving.
+            challenges both my physical and mental strength and mirrors my
+            approach to problem-solving.
         </p>
     </div>
 
@@ -85,9 +86,9 @@ import Fa from "svelte-fa";
             <div>
                 <h3 class="text-sm font-semibold mb-1">Education</h3>
                 <p class="text-xs leading-relaxed text-accent/70">
-                    Pursuing a B.Sc. in Software Development at the IT University
-                    of Copenhagen (2023–2027), with a focus on both theoretical
-                    and practical software engineering.
+                    Pursuing a B.Sc. in Software Development at the IT
+                    University of Copenhagen (2023–2027), with a focus on both
+                    theoretical and practical software engineering.
                 </p>
             </div>
         </div>
@@ -105,8 +106,9 @@ import Fa from "svelte-fa";
             <div>
                 <h3 class="text-sm font-semibold mb-1">Interests</h3>
                 <p class="text-xs leading-relaxed text-accent/70">
-                    Climbing &amp; bouldering, supporting Brøndby IF, and exploring
-                    the intersection of AI, automation and platform engineering.
+                    Climbing &amp; bouldering, supporting Brøndby IF, and
+                    exploring the intersection of AI, automation and platform
+                    engineering.
                 </p>
             </div>
         </div>
