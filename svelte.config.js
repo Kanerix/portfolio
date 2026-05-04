@@ -8,7 +8,7 @@ const config = {
   kit: {
     adapter: adapter(),
     paths: {
-      base: process.argv.includes("dev") ? "" : "/portfolio",
+      base: "",
     },
   },
   extensions: [".svelte", ".svx"],
