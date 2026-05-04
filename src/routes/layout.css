@@ -11,6 +11,7 @@
   --color-card-foreground: var(--card-foreground);
   --color-accent: var(--accent);
   --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
   --color-border: var(--border);
   --color-ring: var(--ring);
 
@@ -25,23 +26,128 @@
     "Poppins", "Arial", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
-  --background: oklch(0.1 0 290);
-  --foreground: oklch(1 0 0);
-  --accent: oklch(0.7 0 0);
-  --primary: oklch(0.65 0.15 250);
-  --card-background: oklch(0.2 0 290);
-  --card-foreground: oklch(1 0 0);
-  --border: oklch(0.9 0 0);
-  --ring: oklch(0.7 0 0);
+  --background: oklch(0.07 0.025 275);
+  --foreground: oklch(0.97 0.005 250);
+  --accent: oklch(0.65 0.015 265);
+  --primary: oklch(0.62 0.22 258);
+  --secondary: oklch(0.60 0.18 200);
+  --card-background: oklch(0.12 0.035 275 / 0.82);
+  --card-foreground: oklch(0.97 0.005 250);
+  --border: oklch(0.4 0.05 260 / 0.25);
+  --ring: oklch(0.62 0.22 258 / 0.4);
 
-  --radius: 0.625rem;
+  --radius: 0.75rem;
 }
 
+/* ─── Aurora blob animations ─────────────────────────────────────────────── */
+@keyframes aurora-1 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  25%       { transform: translate(6%, -8%) scale(1.08); }
+  50%       { transform: translate(-4%, 5%) scale(0.94); }
+  75%       { transform: translate(3%, 10%) scale(1.04); }
+}
+@keyframes aurora-2 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  30%       { transform: translate(-7%, 6%) scale(1.06); }
+  60%       { transform: translate(5%, -7%) scale(0.96); }
+}
+@keyframes aurora-3 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  40%       { transform: translate(8%, 4%) scale(1.1); }
+  70%       { transform: translate(-5%, -6%) scale(0.92); }
+}
+
+/* ─── Avatar glow ring ────────────────────────────────────────────────────── */
+@keyframes glow-ring {
+  0%, 100% {
+    box-shadow:
+      0 0 0 3px oklch(0.12 0.035 275),
+      0 0 0 5px oklch(0.62 0.22 258 / 0.55),
+      0 0 28px oklch(0.62 0.22 258 / 0.35);
+  }
+  50% {
+    box-shadow:
+      0 0 0 3px oklch(0.12 0.035 275),
+      0 0 0 5px oklch(0.62 0.22 258 / 0.8),
+      0 0 42px oklch(0.62 0.22 258 / 0.5);
+  }
+}
+
+/* ─── Availability pulse dot ──────────────────────────────────────────────── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1;   box-shadow: 0 0 0 0     oklch(0.65 0.25 150 / 0.7); }
+  50%       { opacity: 0.7; box-shadow: 0 0 0 5px oklch(0.65 0.25 150 / 0); }
+}
+
+/* ─── Page fade-up entrance ───────────────────────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Shimmer for skill chips ─────────────────────────────────────────────── */
+@keyframes shimmer {
+  from { background-position: -200% center; }
+  to   { background-position:  200% center; }
+}
+
+/* ─── Base layer ─────────────────────────────────────────────────────────── */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground w-full min-h-screen overflow-y-auto;
+    @apply bg-background text-foreground w-full min-h-screen overflow-y-auto lg:h-screen lg:overflow-hidden;
+    font-family: var(--font-poppins);
+  }
+}
+
+/* ─── Glass card utility ──────────────────────────────────────────────────── */
+@layer utilities {
+  .glass {
+    background: var(--card-background);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    border: 1px solid oklch(0.55 0.12 260 / 0.18);
+    box-shadow:
+      inset 0 1px 0 oklch(1 0 0 / 0.04),
+      0 4px 6px oklch(0 0 0 / 0.15),
+      0 16px 48px oklch(0 0 0 / 0.25);
+  }
+
+  .glass-hover {
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .glass-hover:hover {
+    border-color: oklch(0.62 0.22 258 / 0.35);
+    box-shadow:
+      inset 0 1px 0 oklch(1 0 0 / 0.06),
+      0 4px 6px oklch(0 0 0 / 0.15),
+      0 16px 48px oklch(0 0 0 / 0.25),
+      0 0 0 1px oklch(0.62 0.22 258 / 0.12),
+      0 0 32px oklch(0.62 0.22 258 / 0.08);
+  }
+
+  .gradient-text {
+    background: linear-gradient(
+      135deg,
+      oklch(0.97 0.005 250) 0%,
+      oklch(0.90 0.06 255) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .avatar-glow {
+    animation: glow-ring 4s ease-in-out infinite;
+  }
+
+  .availability-dot {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  .page-enter {
+    animation: fade-up 0.3s ease-out both;
   }
 }
