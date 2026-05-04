@@ -4,6 +4,13 @@
         <meta charset="utf-8" />
         <link rel="icon" href="%sveltekit.assets%/favicon.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!-- Preload Poppins font weights used in the layout -->
+        <link rel="preload" as="font" type="font/woff2" crossorigin href="%sveltekit.assets%/fonts/poppins-latin-400-normal.woff2" />
+        <link rel="preload" as="font" type="font/woff2" crossorigin href="%sveltekit.assets%/fonts/poppins-latin-500-normal.woff2" />
+        <link rel="preload" as="font" type="font/woff2" crossorigin href="%sveltekit.assets%/fonts/poppins-latin-600-normal.woff2" />
+        <link rel="preload" as="font" type="font/woff2" crossorigin href="%sveltekit.assets%/fonts/poppins-latin-700-normal.woff2" />
+        <!-- Font-face definitions served as static HTML — never touched by SvelteKit's CSS chunk manager -->
+        <link rel="stylesheet" href="%sveltekit.assets%/fonts/poppins.css" />
         %sveltekit.head%
     </head>
     <body data-sveltekit-preload-data="hover">

@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "@fontsource/poppins";
 @plugin "@tailwindcss/typography";
 
 @theme inline {
