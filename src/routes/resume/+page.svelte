@@ -1,27 +1,14 @@
 <script lang="ts">
-    import type { IconDefinition } from "@fortawesome/free-solid-svg-icons";
-    import {
-        faAward,
-        faFileLines,
-        faGraduationCap,
-        faRobot,
-    } from "@fortawesome/free-solid-svg-icons";
-    import Fa from "svelte-fa";
-
     interface TimelineEntry {
-        icon: IconDefinition;
         title: string;
         subtitle: string;
         date: string;
         description: string;
         tags?: string[];
-        iconColor?: string;
     }
 
     const experience: TimelineEntry[] = [
         {
-            icon: faRobot,
-            iconColor: "#7c8ff7",
             title: "Student Worker — AI & Data Platform Engineer",
             subtitle: "Egmont, Copenhagen",
             date: "Nov 2023 — Present",
@@ -38,8 +25,6 @@
 
     const education: TimelineEntry[] = [
         {
-            icon: faGraduationCap,
-            iconColor: "#a78bfa",
             title: "B.Sc. Software Development",
             subtitle: "IT University of Copenhagen",
             date: "Aug 2023 — Jun 2027",
@@ -50,8 +35,6 @@
                 theoretical and practical aspects of software development.",
         },
         {
-            icon: faAward,
-            iconColor: "#f472b6",
             title: "Higher Technical Examination (HTX)",
             subtitle: "Københavns Mediegymnasium",
             date: "Aug 2020 — Jun 2023",
@@ -63,6 +46,11 @@
             tags: ["Computer Science", "Technology", "Mathematics"],
         },
     ];
+
+    const sections = [
+        { id: "experience", title: "Experience", entries: experience },
+        { id: "education", title: "Education", entries: education },
+    ];
 </script>
 
 <svelte:head>
@@ -73,183 +61,173 @@
     />
 </svelte:head>
 
-<div class="flex flex-col gap-6">
-    <!-- Page Header -->
-    <div class="flex items-center gap-3">
-        <div
-            class="flex items-center justify-center w-10 h-10 rounded-xl"
-            style="background: oklch(0.62 0.22 258 / 0.15); color: oklch(0.75 0.18 258);"
-        >
-            <Fa icon={faFileLines} class="text-lg" />
-        </div>
-        <div>
-            <h1 class="text-2xl font-bold leading-tight">Resume</h1>
-            <p class="text-sm text-accent/70">My experience and education</p>
-        </div>
-    </div>
+<div class="resume-page">
+    <header class="page-header section-rule">
+        <p class="eyebrow">Resume</p>
+        <h1 class="page-heading">Experience &amp; education.</h1>
+        <p class="page-intro">
+            My work in AI and data platforms, and the technical education behind it.
+        </p>
+    </header>
 
-    <hr class="border-border" />
-
-    <!-- Experience Section -->
-    <div class="flex flex-col gap-4">
-        <h2
-            class="text-[0.65rem] font-bold uppercase tracking-widest text-accent/50"
-        >
-            Experience
-        </h2>
-
-        <div class="relative flex flex-col">
-            <!-- Timeline line -->
-            <div
-                class="absolute left-4 top-6 bottom-6 w-px"
-                style="background: linear-gradient(to bottom, oklch(0.62 0.22 258 / 0.4), oklch(0.60 0.18 200 / 0.2));"
-            ></div>
-
-            {#each experience as entry, i}
-                <div
-                    class="relative flex gap-4 sm:gap-5 {i !==
-                    experience.length - 1
-                        ? 'pb-8'
-                        : ''}"
-                >
-                    <!-- Icon node -->
-                    <div
-                        class="relative z-10 flex items-center justify-center w-8 h-8 shrink-0 rounded-lg"
-                        style="
-                            background: color-mix(in srgb, {entry.iconColor ??
-                            '#7c8ff7'} 18%, oklch(0.12 0.035 275));
-                            box-shadow: 0 0 0 4px oklch(0.12 0.035 275), 0 0 10px color-mix(in srgb, {entry.iconColor ??
-                            '#7c8ff7'} 40%, transparent);
-                        "
-                    >
-                        <Fa
-                            icon={entry.icon}
-                            color={entry.iconColor ?? "#7c8ff7"}
-                            class="text-xs"
-                        />
-                    </div>
-
-                    <!-- Content -->
-                    <div class="flex flex-col gap-1.5 pt-0.5 min-w-0">
-                        <div
-                            class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-2"
-                        >
-                            <h3 class="text-sm font-semibold leading-tight">
-                                {entry.title}
-                            </h3>
-                            <span class="text-xs text-accent/50"
-                                >{entry.subtitle}</span
-                            >
+    {#each sections as section}
+        <section class="resume-section" aria-labelledby={section.id}>
+            <h2 class="section-heading" id={section.id}>{section.title}</h2>
+            <ol class="timeline">
+                {#each section.entries as entry}
+                    <li class="timeline-entry">
+                        <p class="entry-date section-label">{entry.date}</p>
+                        <div class="entry-content">
+                            <h3>{entry.title}</h3>
+                            <p class="entry-organisation">{entry.subtitle}</p>
+                            <p class="entry-description">{entry.description}</p>
+                            {#if entry.tags}
+                                <ul class="entry-tags" aria-label="Topics and technologies">
+                                    {#each entry.tags as tag}
+                                        <li class="tag">{tag}</li>
+                                    {/each}
+                                </ul>
+                            {/if}
                         </div>
-                        <span
-                            class="text-xs font-semibold"
-                            style="color: {entry.iconColor ??
-                                'oklch(0.62 0.22 258)'};">{entry.date}</span
-                        >
-                        <p
-                            class="text-xs sm:text-sm leading-relaxed text-accent/75"
-                        >
-                            {entry.description}
-                        </p>
-                        {#if entry.tags}
-                            <div class="flex flex-wrap gap-1.5 pt-1">
-                                {#each entry.tags as tag}
-                                    <span
-                                        class="text-[0.65rem] font-semibold px-2 py-0.5 rounded-md"
-                                        style="background: oklch(0.62 0.22 258 / 0.12); color: oklch(0.78 0.15 258); border: 1px solid oklch(0.62 0.22 258 / 0.2);"
-                                    >
-                                        {tag}
-                                    </span>
-                                {/each}
-                            </div>
-                        {/if}
-                    </div>
-                </div>
-            {/each}
-        </div>
-    </div>
-
-    <hr class="border-border" />
-
-    <!-- Education Section -->
-    <div class="flex flex-col gap-4">
-        <h2
-            class="text-[0.65rem] font-bold uppercase tracking-widest text-accent/50"
-        >
-            Education
-        </h2>
-
-        <div class="relative flex flex-col">
-            <!-- Timeline line -->
-            <div
-                class="absolute left-4 top-6 bottom-6 w-px"
-                style="background: linear-gradient(to bottom, oklch(0.55 0.24 320 / 0.4), oklch(0.60 0.18 200 / 0.2));"
-            ></div>
-
-            {#each education as entry, i}
-                <div
-                    class="relative flex gap-4 sm:gap-5 {i !==
-                    education.length - 1
-                        ? 'pb-8'
-                        : ''}"
-                >
-                    <!-- Icon node -->
-                    <div
-                        class="relative z-10 flex items-center justify-center w-8 h-8 shrink-0 rounded-lg"
-                        style="
-                            background: color-mix(in srgb,
-                            {entry.iconColor ?? '#a78bfa'}
-                            18%, oklch(0.12 0.035 275)); box-shadow: 0 0 0 4px
-                            oklch(0.12 0.035 275), 0 0 10px
-                            color-mix(in srgb,
-                            {entry.iconColor ?? '#a78bfa'}
-                            40%, transparent);
-                        "
-                    >
-                        <Fa
-                            icon={entry.icon}
-                            color={entry.iconColor ?? "#a78bfa"}
-                            class="text-xs"
-                        />
-                    </div>
-
-                    <!-- Content -->
-                    <div class="flex flex-col gap-1.5 pt-0.5 min-w-0">
-                        <div
-                            class="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-2"
-                        >
-                            <h3 class="text-sm font-semibold leading-tight">
-                                {entry.title}
-                            </h3>
-                            <span class="text-xs text-accent/50"
-                                >{entry.subtitle}</span
-                            >
-                        </div>
-                        <span
-                            class="text-xs font-semibold"
-                            style="color: {entry.iconColor ?? '#a78bfa'};"
-                            >{entry.date}</span
-                        >
-                        <p
-                            class="text-xs sm:text-sm leading-relaxed text-accent/75"
-                        >
-                            {entry.description}
-                        </p>
-                        {#if entry.tags}
-                            <div class="flex flex-wrap gap-1.5 pt-1">
-                                {#each entry.tags as tag}
-                                    <span
-                                        class="text-[0.65rem] font-semibold px-2 py-0.5 rounded-md"
-                                        style="background: oklch(0.55 0.24 320 / 0.12); color: oklch(0.75 0.18 320); border: 1px solid oklch(0.55 0.24 320 / 0.2);"
-                                    >
-                                        {tag}
-                                    </span>
-                                {/each}
-                            </div>
-                        {/if}
-                    </div>
-                </div>
-            {/each}
-        </div>
-    </div>
+                    </li>
+                {/each}
+            </ol>
+        </section>
+    {/each}
 </div>
+
+<style>
+    .resume-page {
+        min-width: 0;
+        color: var(--foreground);
+    }
+
+    .page-header {
+        display: grid;
+        gap: 16px;
+        padding-bottom: 36px;
+    }
+
+    .page-header p,
+    .page-header h1 {
+        margin: 0;
+    }
+
+    .page-intro {
+        max-width: 54ch;
+        text-wrap: pretty;
+    }
+
+    .resume-section {
+        padding-top: 36px;
+    }
+
+    .resume-section + .resume-section {
+        margin-top: 36px;
+        border-top: 1px solid var(--border);
+    }
+
+    .section-heading {
+        margin: 0 0 28px;
+    }
+
+    .timeline {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .timeline-entry {
+        display: grid;
+        grid-template-columns: 170px minmax(0, 1fr);
+        gap: 32px;
+    }
+
+    .timeline-entry + .timeline-entry {
+        margin-top: 32px;
+        padding-top: 32px;
+        border-top: 1px solid var(--border);
+    }
+
+    .entry-date {
+        margin: 0;
+        padding-top: 4px;
+        color: var(--accent);
+        font-size: 12px;
+        line-height: 1.8;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .entry-content {
+        min-width: 0;
+        padding-left: 24px;
+        border-left: 1px solid var(--border);
+    }
+
+    .entry-content h3 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.5;
+        text-wrap: pretty;
+    }
+
+    .entry-organisation {
+        margin: 8px 0 0;
+        color: var(--primary);
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .entry-description {
+        max-width: 65ch;
+        margin: 20px 0 0;
+        color: var(--accent);
+        font-size: 16px;
+        line-height: 1.8;
+        text-wrap: pretty;
+    }
+
+    .entry-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 20px 0 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    @container (max-width: 600px) {
+        .timeline-entry {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 12px;
+        }
+
+        .entry-content {
+            padding-left: 16px;
+        }
+    }
+
+    @media (max-width: 700px) {
+        .page-header {
+            padding-bottom: 28px;
+        }
+
+        .timeline-entry {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 12px;
+        }
+
+        .entry-date {
+            padding-top: 0;
+        }
+
+        .entry-content {
+            padding-left: 16px;
+        }
+
+        .entry-content h3 {
+            font-size: 18px;
+        }
+    }
+</style>

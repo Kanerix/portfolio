@@ -1,116 +1,100 @@
 <script lang="ts">
-    import {
-        faCode,
-        faGraduationCap,
-        faLightbulb,
-        faUser,
-    } from "@fortawesome/free-solid-svg-icons";
+    import { faArrowRight, faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
     import Fa from "svelte-fa";
+    import { base } from "$app/paths";
 </script>
 
 <svelte:head>
     <title>About Me — Kasper Jønsson</title>
-    <meta
-        name="description"
-        content="Learn more about Kasper Jønsson, a software engineer."
-    />
+    <meta name="description" content="Meet Kasper Jønsson, an AI & Data Platform Engineer at Egmont and Software Development student at the IT University of Copenhagen." />
 </svelte:head>
 
-<div class="flex flex-col gap-6">
-    <!-- Page Header -->
-    <div class="flex items-center gap-3">
-        <div
-            class="flex items-center justify-center w-10 h-10 rounded-xl"
-            style="background: oklch(0.62 0.22 258 / 0.15); color: oklch(0.75 0.18 258);"
-        >
-            <Fa icon={faUser} class="text-lg" />
-        </div>
-        <div>
-            <h1 class="text-2xl font-bold leading-tight">About Me</h1>
-            <p class="text-sm text-accent/70">A little bit about who I am</p>
-        </div>
-    </div>
-
-    <hr class="border-border" />
-
-    <!-- Introduction -->
-    <div class="flex flex-col gap-3">
-        <p class="text-sm leading-relaxed text-accent/80">
-            I am a passionate and driven Software Development student with a
-            strong interest in AI, data and technology. Currently working as an
-            AI &amp; Data Platform Engineer at Egmont, I thrive in environments
-            where I can solve complex problems and build innovative solutions
-            that make a real impact.
+<div class="about-page">
+    <section class="intro section-rule" aria-labelledby="about-heading">
+        <p class="eyebrow">About me / A little introduction</p>
+        <h1 id="about-heading" class="page-heading">Curious by nature.<br />Engineer by <span class="accent-word">craft.</span></h1>
+        <p class="page-intro">
+            I’m Kasper, a Software Development student and AI & Data Platform
+            Engineer at Egmont. I turn complex problems into useful tools,
+            reliable infrastructure, and a little less manual work.
         </p>
-        <p class="text-sm leading-relaxed text-accent/80">
-            Outside of tech, I am an active and social person who values both
-            teamwork and community. I am a dedicated Brøndby IF supporter and
-            spend a lot of my free time climbing and bouldering — a sport that
-            challenges both my physical and mental strength and mirrors my
-            approach to problem-solving.
-        </p>
-    </div>
+        <div class="intro-actions">
+            <a href="{base}/resume" class="button-primary">Explore my experience <Fa icon={faArrowRight} /></a>
+            <a href="https://github.com/Kanerix" target="_blank" rel="noopener noreferrer" class="button-secondary">View GitHub <Fa icon={faArrowUpRightFromSquare} /></a>
+        </div>
+        <div class="current-focus"><span class="focus-dot" aria-hidden="true"></span><span>Currently building at <strong>Egmont</strong></span><span class="focus-location">Copenhagen, DK</span></div>
+    </section>
 
-    <!-- Highlight Cards -->
-    <div class="flex flex-col gap-3">
-        <div
-            class="flex items-start gap-4 p-4 rounded-xl glass-hover transition-all duration-200 cursor-default"
-            style="background: oklch(0.09 0.025 275 / 0.7); border: 1px solid oklch(0.55 0.12 260 / 0.15);"
-        >
-            <span
-                class="flex items-center justify-center w-9 h-9 rounded-lg shrink-0 mt-0.5"
-                style="background: oklch(0.62 0.22 258 / 0.15); color: oklch(0.72 0.2 258);"
-            >
-                <Fa icon={faCode} class="text-sm" />
-            </span>
-            <div>
-                <h3 class="text-sm font-semibold mb-1">What I Do</h3>
-                <p class="text-xs leading-relaxed text-accent/70">
-                    AI &amp; Data platform engineering, process automation and
-                    infrastructure development at Egmont — building tools that
-                    let teams across the company leverage cutting-edge AI.
-                </p>
+    <section class="work-section section-rule" aria-labelledby="work-heading">
+        <div class="section-topline"><h2 id="work-heading" class="section-heading">Where I make an impact</h2><span class="section-label">01 / What I do</span></div>
+        <p class="section-description">Making AI useful is as much about the systems around it as the models themselves.</p>
+        <div class="focus-grid">
+            <div class="focus-item">
+                <span class="focus-number">/01</span>
+                <h3>AI & data platforms</h3>
+                <p>Helping build a company-wide platform for AI image and video generation.</p>
+                <div class="focus-tags"><span class="tag">AI / ML</span><span class="tag">Python</span></div>
+            </div>
+            <div class="focus-item">
+                <span class="focus-number">/02</span>
+                <h3>Less busywork.<br />Better workflows.</h3>
+                <p>Developing internal automation that gives teams their time back.</p>
+                <div class="focus-tags"><span class="tag">Automation</span><span class="tag">TypeScript</span></div>
+            </div>
+            <div class="focus-item">
+                <span class="focus-number">/03</span>
+                <h3>A solid foundation</h3>
+                <p>Developing and maintaining the infrastructure that makes it all run.</p>
+                <div class="focus-tags"><span class="tag">Docker</span><span class="tag">Rust</span></div>
             </div>
         </div>
+    </section>
 
-        <div
-            class="flex items-start gap-4 p-4 rounded-xl glass-hover transition-all duration-200 cursor-default"
-            style="background: oklch(0.09 0.025 275 / 0.7); border: 1px solid oklch(0.55 0.12 260 / 0.15);"
-        >
-            <span
-                class="flex items-center justify-center w-9 h-9 rounded-lg shrink-0 mt-0.5"
-                style="background: oklch(0.60 0.18 200 / 0.15); color: oklch(0.70 0.16 200);"
-            >
-                <Fa icon={faGraduationCap} class="text-sm" />
-            </span>
-            <div>
-                <h3 class="text-sm font-semibold mb-1">Education</h3>
-                <p class="text-xs leading-relaxed text-accent/70">
-                    Pursuing a B.Sc. in Software Development at the IT
-                    University of Copenhagen (2023–2027), with a focus on both
-                    theoretical and practical software engineering.
-                </p>
-            </div>
+    <section class="beyond-section" aria-labelledby="beyond-heading">
+        <div class="section-topline"><h2 id="beyond-heading" class="section-heading">Beyond the keyboard</h2><span class="section-label">02 / The human side</span></div>
+        <p class="section-description">Usually climbing, bouldering, or supporting Brøndby IF. I value teamwork and community, whether I’m finding a route up a wall or working through a problem with a team.</p>
+        <div class="education-note surface">
+            <div><p class="section-label">Always learning</p><h3>B.Sc. Software Development</h3><p>IT University of Copenhagen <span>2023–2027</span></p></div>
+            <a href="{base}/resume" class="text-link" aria-label="View education in my resume"><Fa icon={faArrowRight} /></a>
         </div>
-
-        <div
-            class="flex items-start gap-4 p-4 rounded-xl glass-hover transition-all duration-200 cursor-default"
-            style="background: oklch(0.09 0.025 275 / 0.7); border: 1px solid oklch(0.55 0.12 260 / 0.15);"
-        >
-            <span
-                class="flex items-center justify-center w-9 h-9 rounded-lg shrink-0 mt-0.5"
-                style="background: oklch(0.55 0.24 320 / 0.15); color: oklch(0.72 0.2 320);"
-            >
-                <Fa icon={faLightbulb} class="text-sm" />
-            </span>
-            <div>
-                <h3 class="text-sm font-semibold mb-1">Interests</h3>
-                <p class="text-xs leading-relaxed text-accent/70">
-                    Climbing &amp; bouldering, supporting Brøndby IF, and
-                    exploring the intersection of AI, automation and platform
-                    engineering.
-                </p>
-            </div>
-        </div>
-    </div>
+    </section>
 </div>
+
+<style>
+    .about-page { display: flex; flex-direction: column; gap: 32px; }
+    .intro { padding-bottom: 28px; }
+    .accent-word { color: var(--primary); }
+    .intro-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+    .current-focus { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 28px; font-size: 10px; color: var(--accent); }
+    .current-focus strong { color: var(--foreground); font-weight: 500; }
+    .focus-dot { width: 5px; height: 5px; background: var(--primary); border-radius: 50%; }
+    .focus-location { margin-left: auto; font-variation-settings: "MONO" 1; font-size: 9px; }
+    .section-topline { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .section-topline .section-label { font-size: 8px; }
+    .section-description { font-size: 15px; color: var(--accent); line-height: 1.85; margin-top: 14px; }
+    .work-section { padding-bottom: 32px; }
+    .focus-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 25px; }
+    .focus-item { display: flex; flex-direction: column; padding-right: 16px; }
+    .focus-item + .focus-item { border-left: 1px solid var(--border); padding-left: 18px; }
+    .focus-item:last-child { padding-right: 0; }
+    .focus-number { font-variation-settings: "MONO" 1; color: var(--primary); font-size: 10px; margin-bottom: 14px; }
+    .focus-item h3 { font-size: 14px; font-weight: 600; line-height: 1.5; min-height: 42px; letter-spacing: -0.3px; }
+    .focus-item p { font-size: 13px; line-height: 1.85; color: var(--accent); margin-top: 10px; margin-bottom: 16px; }
+    .focus-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: auto; }
+    .focus-tags .tag { font-size: 8px; padding: 3px 6px; }
+    .education-note { margin-top: 24px; padding: 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .education-note .section-label { font-size: 8px; }
+    .education-note h3 { font-size: 13px; font-weight: 600; margin-top: 8px; }
+    .education-note p:not(.section-label) { color: var(--accent); font-size: 10px; margin-top: 4px; }
+    .education-note p span { display: inline-block; margin-left: 12px; font-variation-settings: "MONO" 1; font-size: 9px; }
+    .education-note a { display: grid; place-items: center; width: 44px; height: 44px; flex-shrink: 0; }
+    @media (max-width: 900px) and (min-width: 701px), (max-width: 440px) {
+        .focus-grid { grid-template-columns: 1fr; gap: 20px; }
+        .focus-item { padding: 0; }
+        .focus-item + .focus-item { padding: 20px 0 0; border-left: 0; border-top: 1px solid var(--border); }
+        .focus-number { margin-bottom: 8px; }
+        .focus-item h3 { min-height: 0; font-size: 16px; }
+        .focus-item p { font-size: 13px; margin-bottom: 12px; }
+        .focus-location { margin-left: 13px; }
+    }
+</style>
