@@ -12,11 +12,12 @@
 <div class="about-page">
     <section class="intro section-rule" aria-labelledby="about-heading">
         <p class="eyebrow">About me / A little introduction</p>
-        <h1 id="about-heading" class="page-heading">Curious by nature.<br />Engineer by <span class="accent-word">craft.</span></h1>
+        <h1 id="about-heading" class="page-heading">Hi, I’m <span class="accent-word">Kasper.</span></h1>
         <p class="page-intro">
-            I’m Kasper, a Software Development student and AI & Data Platform
-            Engineer at Egmont. I turn complex problems into useful tools,
-            reliable infrastructure, and a little less manual work.
+            I study Software Development at the IT University of Copenhagen
+            and work as an AI & Data Platform Engineer at Egmont. My work involves
+            building AI tools, automating everyday tasks, and keeping the
+            infrastructure running.
         </p>
         <div class="intro-actions">
             <a href={resolve("/resume")} class="button-primary">Explore my experience <Fa icon={faArrowRight} /></a>
@@ -27,17 +28,17 @@
 
     <section class="work-section section-rule" aria-labelledby="work-heading">
         <div class="section-topline"><h2 id="work-heading" class="section-heading">Where I make an impact</h2><span class="section-label">01 / What I do</span></div>
-        <p class="section-description">Making AI useful is as much about the systems around it as the models themselves.</p>
+        <p class="section-description">At Egmont, I work on AI tools, internal automation, and infrastructure.</p>
         <div class="focus-grid">
             <div class="focus-item">
                 <span class="focus-number">/01</span>
                 <h3>AI & data platforms</h3>
-                <p>Helping build a company-wide platform for AI image and video generation.</p>
+                <p>Helping build a company-wide AI platform.</p>
                 <div class="focus-tags"><span class="tag">AI / ML</span><span class="tag">Python</span></div>
             </div>
             <div class="focus-item">
                 <span class="focus-number">/02</span>
-                <h3>Less busywork.<br />Better workflows.</h3>
+                <h3>Internal automation</h3>
                 <p>Developing internal automation that gives teams their time back.</p>
                 <div class="focus-tags"><span class="tag">Automation</span><span class="tag">TypeScript</span></div>
             </div>

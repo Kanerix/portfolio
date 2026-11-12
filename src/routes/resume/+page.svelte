@@ -16,7 +16,7 @@
                 "Working on the AI & Data platform across three focus areas: \
                 designing and developing internal automation workflows that \
                 reduce manual workload; playing a key role in building a \
-                company-wide AI image and video generation platform; and \
+                company-wide AI platform; and \
                 contributing to the development and maintenance of the AI & Data \
                 platform infrastructure.",
             tags: ["Python", "TypeScript", "Docker", "Rust", "AI/ML"],
