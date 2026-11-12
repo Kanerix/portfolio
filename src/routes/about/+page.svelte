@@ -1,7 +1,7 @@
 <script lang="ts">
     import { faArrowRight, faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
     import Fa from "svelte-fa";
-    import { base } from "$app/paths";
+    import { resolve } from "$app/paths";
 </script>
 
 <svelte:head>
@@ -19,7 +19,7 @@
             reliable infrastructure, and a little less manual work.
         </p>
         <div class="intro-actions">
-            <a href="{base}/resume" class="button-primary">Explore my experience <Fa icon={faArrowRight} /></a>
+            <a href={resolve("/resume")} class="button-primary">Explore my experience <Fa icon={faArrowRight} /></a>
             <a href="https://github.com/Kanerix" target="_blank" rel="noopener noreferrer" class="button-secondary">View GitHub <Fa icon={faArrowUpRightFromSquare} /></a>
         </div>
         <div class="current-focus"><span class="focus-dot" aria-hidden="true"></span><span>Currently building at <strong>Egmont</strong></span><span class="focus-location">Copenhagen, DK</span></div>
@@ -55,7 +55,7 @@
         <p class="section-description">Usually climbing, bouldering, or supporting Brøndby IF. I value teamwork and community, whether I’m finding a route up a wall or working through a problem with a team.</p>
         <div class="education-note surface">
             <div><p class="section-label">Always learning</p><h3>B.Sc. Software Development</h3><p>IT University of Copenhagen <span>2023–2027</span></p></div>
-            <a href="{base}/resume" class="text-link" aria-label="View education in my resume"><Fa icon={faArrowRight} /></a>
+            <a href={resolve("/resume")} class="text-link" aria-label="View education in my resume"><Fa icon={faArrowRight} /></a>
         </div>
     </section>
 </div>

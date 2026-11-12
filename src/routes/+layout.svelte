@@ -2,18 +2,18 @@
     import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
     import { faArrowRight, faArrowUpRightFromSquare, faEnvelope } from "@fortawesome/free-solid-svg-icons";
     import Fa from "svelte-fa";
-    import { base } from "$app/paths";
+    import { resolve } from "$app/paths";
     import { page } from "$app/state";
     import avatar from "$lib/images/pfp2_BW.jpg";
     import "./layout.css";
 
     const { children } = $props();
     const navItems = [
-        { title: "About Me", href: `${base}/about`, external: false },
-        { title: "Resume", href: `${base}/resume`, external: false },
+        { title: "About Me", href: "/about", external: false },
+        { title: "Resume", href: "/resume", external: false },
         { title: "Projects", href: "https://github.com/Kanerix", external: true },
-        { title: "Contact", href: `${base}/contact`, external: false },
-    ];
+        { title: "Contact", href: "/contact", external: false },
+    ] as const;
     const languages = ["Rust", "Python", "TypeScript", "Go"];
     const tools = ["Git & GitHub", "Docker & K8s", "SQL & NoSQL"];
     const socials = [
@@ -31,7 +31,7 @@
 <a href="#main-content" class="skip-link">Skip to content</a>
 <div class="site-shell">
     <header class="site-header">
-        <a href="{base}/about" class="wordmark" aria-label="Kasper Jønsson — home">
+        <a href={resolve("/about")} class="wordmark" aria-label="Kasper Jønsson — home">
             <span class="wordmark-symbol" aria-hidden="true">k<span>.</span></span>
             <span>Kasper Jønsson<span class="wordmark-caption">Engineer & builder</span></span>
         </a>
@@ -69,7 +69,7 @@
                 </ul>
             </div>
 
-            <a href="{base}/contact" class="profile-contact">Let’s build something<Fa icon={faArrowRight} /></a>
+            <a href={resolve("/contact")} class="profile-contact">Let’s build something<Fa icon={faArrowRight} /></a>
             <div class="social-links">
                 {#each socials as { icon, label, href }}
                     <a {href} aria-label={label} title={label} target={label === "Email" ? undefined : "_blank"} rel={label === "Email" ? undefined : "noopener noreferrer"}>
@@ -82,10 +82,10 @@
 
         <div class="content-panel">
             <nav class="main-nav" aria-label="Main navigation">
-                {#each navItems as { title, href, external }}
-                    <a {href} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined} aria-current={page.url.pathname === href ? "page" : undefined} data-sveltekit-preload-data={external ? undefined : "hover"}>
-                        {title}
-                        {#if external}<Fa icon={faArrowUpRightFromSquare} class="external-icon" />{/if}
+                {#each navItems as item}
+                    <a href={item.external ? item.href : resolve(item.href)} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener noreferrer" : undefined} aria-current={page.route.id === item.href ? "page" : undefined} data-sveltekit-preload-data={item.external ? undefined : "hover"}>
+                        {item.title}
+                        {#if item.external}<Fa icon={faArrowUpRightFromSquare} class="external-icon" />{/if}
                     </a>
                 {/each}
             </nav>
