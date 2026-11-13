@@ -4,7 +4,7 @@
     import Fa from "svelte-fa";
     import { resolve } from "$app/paths";
     import { page } from "$app/state";
-    import avatar from "$lib/images/pfp2_BW.jpg";
+    import avatar from "$lib/images/pfp.webp";
     import "./layout.css";
 
     const { children } = $props();
